@@ -9,9 +9,9 @@
 2.  Download [Etcher](https://www.balena.io/etcher/)
 
 3.  Etch Raspbian zip to your micro SD card with Etcher.
-    TODO: show how to not eject on complete
+    In settings, uncheck _Auto-unmount on success_.
 
-    ![](./images/etcher-settings)
+    ![](./images/etcher-settings.png)
 
 4.  Enable ssh for headless setup:
 
