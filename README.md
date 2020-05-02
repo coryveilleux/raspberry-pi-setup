@@ -10,8 +10,8 @@
 
 3.  Etch Raspbian zip to your micro SD card with Etcher.
     TODO: show how to not eject on complete
-   
-    TODO: screenshot of Etcher
+
+    ![](./images/etcher-settings)
 
 4.  Enable ssh for headless setup:
 
@@ -37,12 +37,13 @@
     ssh pi@[raspberry pi IP address]
     # enter raspberry as the password
     ```
+
 2.  Perform initial configuration for your raspberry pi:
 
     ```bash
     sudo raspi-config
     ```
 
-    i.  Change your password - TODO: details
+    i. Change your password - TODO: details
 
     ii. TODO
