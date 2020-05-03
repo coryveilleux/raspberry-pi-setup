@@ -100,6 +100,44 @@ chsh -s /bin/zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
+##### Plugins
+
+###### Standard
+
+```bash
+sed -i.$(date +'%Y%m%d-%H%M%S') 's/^plugins=([^)]*)$/plugins=(git python pip pipenv pyenv docker vscode virtualenv)/' ~/.zshrc
+```
+
+###### zsh-autosuggestions & zsh-syntax-highlighting
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+sed -i.$(date +'%Y%m%d-%H%M%S') 's/^\(plugins=([^)]*\))$/\1 zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
+```
+
+###### autojump
+
+```bash
+git clone git://github.com/wting/autojump.git
+cd autojump
+./install.py
+echo 'autoload -U compinit && compinit -u' >> ~/.zshrc
+echo '[[ -s /Users/cveilleux/.autojump/etc/profile.d/autojump.sh ]] && source /Users/cveilleux/.autojump/etc/profile.d/autojump.sh' >> ~/.zshrc
+# restart terminal
+```
+
+###### zsh-auto-venv
+
+This will automatically load a python3
+[venv module](https://docs.python.org/3/library/venv.html) virtual environment 
+if a `venv` directory is present in the current directory hierarchy:
+
+```bash
+git clone https://github.com/ikhomutov/zsh-auto-venv.git $ZSH_CUSTOM/plugins/zsh-auto-venv
+sed -i.$(date +'%Y%m%d-%H%M%S') 's/^\(plugins=([^)]*\))$/\1 zsh-auto-venv)/' ~/.zshrc
+```
+
 #### [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
 First you need to install nerd fonts:
@@ -122,11 +160,20 @@ First you need to install nerd fonts:
     brew cask install font-meslolg-nerd-font
     ```
 
+    Also you might want to use this fixed Solarized Dark theme from
+    https://gist.github.com/kevin-smets/8568070:
+
+    1. Download https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Solarized%20Dark%20-%20Patched.itermcolors
+
+    2. In iTerm2 preferences, go to _Preferences_ > _Profiles_ > _Default_ >
+       _Colors_ > _Color Presets..._ and import 
+       `Solarized Dark - Patched.itermcolors`
+
 Now continue with the powerlevel10k install:
 
 ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-sed -i.bak 's#ZSH_THEME="[^"]*"#ZSH_THEME="powerlevel10k/powerlevel10k"#' ~/.zshrc
+sed -i.$(date +'%Y%m%d-%H%M%S') 's#ZSH_THEME="[^"]*"#ZSH_THEME="powerlevel10k/powerlevel10k"#' ~/.zshrc
 zsh
 # or later...
 p10k configure
