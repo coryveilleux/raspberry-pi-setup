@@ -102,10 +102,29 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 #### [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
+First you need to install nerd fonts:
+
+##### Nerd Fonts
+
+1. On raspberry pi:
+
+    ```bash
+    # Note that this clone takes a long time (~11GB)
+    git clone https://github.com/ryanoasis/nerd-fonts.git
+    cd nerd-fonts
+    ./install.sh Meslo
+    ```
+
+2. On Mac (use [iTerm2](https://iterm2.com/)):
+
+    ```bash
+    brew tap homebrew/cask-fonts
+    brew cask install font-meslolg-nerd-font
+    ```
+
+Now continue with the powerlevel10k install:
+
 ```bash
-git clone https://github.com/ryanoasis/nerd-fonts.git
-cd nerd-fonts
-./install.sh Meslo
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 sed -i.bak 's#ZSH_THEME="[^"]*"#ZSH_THEME="powerlevel10k/powerlevel10k"#' ~/.zshrc
 zsh
@@ -150,7 +169,7 @@ sudo -s
 
 ### Language Tools/Frameworks
 
-### pyenv
+#### [pyenv](https://github.com/pyenv/pyenv)
 
 ```bash
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
