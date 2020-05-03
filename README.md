@@ -28,7 +28,7 @@
 2.  Use your router web interface or app to determine what IP address has been
     given to your raspberry pi.
 
-## Initial Raspberry Pi Configuration
+## Initial Raspberry Pi Configuration and Update
 
 1.  SSH into your raspberry pi (default user is `pi` and default password is
     `raspberry`):
@@ -76,62 +76,85 @@
     sudo reboot
     ```
 
-4.  Install development-related things:
+## Software Installation
 
-    i. gVim:
+### Shells / Prompts
 
-        ```bash
-        sudo apt install vim-gui-common vim-gtk
-        ```
+#### zsh
 
-    ii. zsh:
+```bash
+sudo apt install zsh
+chsh -s /bin/zsh
+# exit and ssh back in
+# Choose 1 to setup zsh config
+# Leave History (1) as is
+# Configure Completion (2) - select 1 to turn on default completion
+# Choose 3 to configure editing - select 1 and then v
+# Choose 4 to configure shell options - 1s, 2s
+# Choose 0 to save and exit
+```
 
-        ```bash
-        sudo apt install zsh
-        chsh -s /bin/zsh
-        # exit and ssh back in
-        # Choose 1 to setup zsh config
-        # Leave History (1) as is
-        # Configure Completion (2) - select 1 to turn on default completion
-        # Choose 3 to configure editing - select 1 and then v
-        # Choose 4 to configure shell options - 1s, 2s
-        # Choose 0 to save and exit
-        ```
+#### [Oh My Zsh](https://ohmyz.sh/)
 
-    iii. Oh-my-zsh:
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
-        ```bash
-        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-        ```
+#### [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-    iv. powerlevel10k:
+```bash
+git clone https://github.com/ryanoasis/nerd-fonts.git
+cd nerd-fonts
+./install.sh Meslo
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+sed -i.bak 's#ZSH_THEME="[^"]*"#ZSH_THEME="powerlevel10k/powerlevel10k"#' ~/.zshrc
+zsh
+# or later...
+p10k configure
+# Answer initial questions - should be 4 y, or 3 y and then n
+# My current prefs...
+# Prompt Style - 3 (Rainbow)
+# Character Set - 1 (Unicode)
+# Show current time? - 3 (12-hour format)
+# Prompt Separators - 4 (Round)
+# Prompt Heads - 1 (Sharp)
+# Prompt Tails - 1 (Flat)
+# Prompt Height - 2 (2 lines)
+# Prompt Connection - 2 (Dotted)
+# Prompt Frame - 1 (No frame)
+# Connection Color - 3 (Dark)
+# Prompt Spacing - 2 (Sparse)
+# Icons - 2 (Many icons)
+# Prompt Flow - 2 (Fluent)
+# Enable Transient Prompt? - n (No)
+# Instant Prompt Mode - 3 (Verbose)
+# Overwrite ~/.p10k.zsh? - y (Yes)
+```
 
-        ```bash
-        git clone https://github.com/ryanoasis/nerd-fonts.git
-        cd nerd-fonts
-        ./install.sh Meslo
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-        sed -i.bak 's#ZSH_THEME="[^"]*"#ZSH_THEME="powerlevel10k/powerlevel10k"#' ~/.zshrc
-        zsh
-        # or later...
-        p10k configure
-        # TODO
-        ```
+### Editors/IDEs
 
-    v. Visual Studio Code:
+#### gVim
 
-        ```bash
-        sudo -s
-        . <( wget -O - https://code.headmelted.com/installers/apt.sh )
-        ```
+```bash
+sudo apt install vim-gui-common vim-gtk
+```
 
-TODO
+#### [Visual Studio Code](https://code.headmelted.com/)
 
-    vi. pyenv:
+```bash
+sudo -s
+. <( wget -O - https://code.headmelted.com/installers/apt.sh )
+```
 
-        ```bash
-        git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-        echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
-        ```
+### v TODO v
+
+### Language Tools/Frameworks
+
+### pyenv
+
+```bash
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+```
