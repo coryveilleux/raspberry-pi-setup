@@ -122,7 +122,8 @@ sed -i.$(date +'%Y%m%d-%H%M%S') 's/^\(plugins=([^)]*\))$/\1 zsh-autosuggestions 
 git clone git://github.com/wting/autojump.git
 cd autojump
 ./install.py
-echo '[[ -s /Users/cveilleux/.autojump/etc/profile.d/autojump.sh ]] && source /Users/cveilleux/.autojump/etc/profile.d/autojump.sh' >> ~/.zshrc
+echo '\n# autojump' >> ~/.zshrc
+echo "[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh" >> ~/.zshrc
 echo 'autoload -U compinit && compinit -u' >> ~/.zshrc
 # restart terminal
 ```
@@ -235,6 +236,7 @@ sudo -s
 
 ```bash
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+echo '\n# pyenv' >> ~/.zshrc
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
