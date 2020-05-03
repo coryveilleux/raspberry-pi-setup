@@ -122,8 +122,8 @@ sed -i.$(date +'%Y%m%d-%H%M%S') 's/^\(plugins=([^)]*\))$/\1 zsh-autosuggestions 
 git clone git://github.com/wting/autojump.git
 cd autojump
 ./install.py
-echo 'autoload -U compinit && compinit -u' >> ~/.zshrc
 echo '[[ -s /Users/cveilleux/.autojump/etc/profile.d/autojump.sh ]] && source /Users/cveilleux/.autojump/etc/profile.d/autojump.sh' >> ~/.zshrc
+echo 'autoload -U compinit && compinit -u' >> ~/.zshrc
 # restart terminal
 ```
 
@@ -144,7 +144,7 @@ First you need to install nerd fonts:
 
 ##### Nerd Fonts
 
-1. On raspberry pi:
+1. On raspberry pi via the terminal/ssh:
 
     ```bash
     # Note that this clone takes a long time (~11GB)
@@ -153,7 +153,24 @@ First you need to install nerd fonts:
     ./install.sh Meslo
     ```
 
-2. On Mac (use [iTerm2](https://iterm2.com/)):
+2. On raspberry pi via the desktop/VNC:
+
+    1. Open the terminal app
+   
+    2. Go to _Edit_ > _Preferences_
+   
+    3. On the _Style_ tab choose `MesloLGS Nerd Font Mono Regular`
+
+        * NOTE: Here's a discussion of the `LG`, `L`, `M`, `S`, `DZ`, and `SZ`
+          acronyms:
+          https://github.com/ryanoasis/nerd-fonts/wiki/FAQ-and-Troubleshooting#what-do-these-acronym-variations-in-the-font-name-mean-lg-l-m-s-dz-sz
+
+    4. Also on the _Style_ tab, change the _Palette_ to `Solarized Dark`, and
+       then change again to `Custom`. Set the bottom left color to the custom
+       `#586D74` (this is the same color as the fixed Solarized Dark theme for
+       Mac below).
+
+3. On Mac (use [iTerm2](https://iterm2.com/)):
 
     ```bash
     brew tap homebrew/cask-fonts
@@ -212,8 +229,6 @@ sudo -s
 . <( wget -O - https://code.headmelted.com/installers/apt.sh )
 ```
 
-### v TODO v
-
 ### Language Tools/Frameworks
 
 #### [pyenv](https://github.com/pyenv/pyenv)
@@ -223,4 +238,13 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+```
+
+#### pynv Python Install
+
+```bash
+sudo apt install python-openssl libssl-dev libbz2-dev libedit-dev libreadline-dev libsqlite3-dev
+pyenv install 3.8.2
+pyenv install 3.6.10
+pyenv install 3.5.9
 ```
