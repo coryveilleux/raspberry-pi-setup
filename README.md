@@ -49,23 +49,23 @@
     Use the arrows keys to move between option, the TAB key to switch between
     buttons, and the ENTER key to make a selection.
 
-    i. Change your password - option 1
+    1. Change your password - option 1
 
-    ii. Configure WiFi - option 2 (Network Options), then option N2 (Wi-fi)
+    2. Configure WiFi - option 2 (Network Options), then option N2 (Wi-fi)
 
-        a.  Set your country
+        1.  Set your country
 
-        b.  Enter your SSID
+        2.  Enter your SSID
 
-        c.  Enter your passphrase
+        3.  Enter your passphrase
 
-    iii. Enable VNC - option 5 (Interfacing Options), then option P3 (VNC)
+    3. Enable VNC - option 5 (Interfacing Options), then option P3 (VNC)
 
-    iv. Fix resolution - option 7 (Advanced Options), then A5 (Resolution)
+    4. Fix resolution - option 7 (Advanced Options), then A5 (Resolution)
 
-        a. Choose the last option `DMT Mode 82 1920x1080 60Hz 16:9`
+        1. Choose the last option `DMT Mode 82 1920x1080 60Hz 16:9`
 
-        b. Choose to reboot now
+        2. Choose to reboot now
 
 3.  Perform initial update:
 
