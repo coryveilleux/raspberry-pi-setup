@@ -250,3 +250,40 @@ pyenv install 3.8.2
 pyenv install 3.6.10
 pyenv install 3.5.9
 ```
+
+#### java
+
+```bash
+# java 11
+sudo apt install default-jdk
+# java 8
+sudo apt install openjdk-8-jdk
+```
+
+#### jenv
+
+```bash
+git clone https://github.com/jenv/jenv.git ~/.jenv
+
+echo '\n# jenv' >> ~/.zshrc
+echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(jenv init -)"' >> ~/.zshrc
+
+jenv add /usr/lib/jvm/java-11-openjdk-armhf/
+jenv add /usr/lib/jvm/java-8-openjdk-armhf/
+jenv enable-plugin export
+
+sed -i.$(date +'%Y%m%d-%H%M%S') 's/^\(plugins=([^)]*\))$/\1 jenv)/' ~/.zshrc
+```
+
+#### scala
+
+```bash
+wget https://downloads.typesafe.com/scala/2.13.2/scala-2.13.2.tgz
+sudo mkdir /usr/lib/scala
+sudo tar -xf scala-2.13.2.tgz -C /usr/lib/scala
+rm scala-2.13.2.tgz
+sudo ln -s /usr/lib/scala/scala-2.13.2/bin/scala /bin/scala
+sudo ln -s /usr/lib/scala/scala-2.13.2/bin/scalac /bin/scalac
+scala --version
+```
