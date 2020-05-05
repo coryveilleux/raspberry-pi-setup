@@ -313,3 +313,18 @@ sudo ln -s /usr/lib/scala/scala-2.13.2/bin/scalac /bin/scalac
 
 scala --version
 ```
+
+#### IntelliJ IDEA Ultimate
+
+Adapted from https://pavelfatin.com/install-intellij-idea-on-raspberry-pi/:
+
+```bash
+wget https://download.jetbrains.com/idea/ideaIU-2020.1.1.tar.gz
+
+sudo tar -xf ideaIU-2020.1.1.tar.gz -C /usr/share/
+sudo mv /usr/share/idea-IU-201.7223.91 /usr/share/idea
+
+rm ideaIU-2020.1.1.tar.gz
+
+sudo ln -s /usr/share/idea/bin/idea.sh /bin/idea
+```
