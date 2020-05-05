@@ -78,7 +78,13 @@
 
 ## Software Installation
 
-### Shells / Prompts
+### Mosh / Shells / Prompts
+
+#### Mosh
+
+```bash
+sudo apt install mosh
+```
 
 #### zsh
 
@@ -113,6 +119,7 @@ sed -i.$(date +'%Y%m%d-%H%M%S') 's/^plugins=([^)]*)$/plugins=(git python pip pip
 ```bash
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
 sed -i.$(date +'%Y%m%d-%H%M%S') 's/^\(plugins=([^)]*\))$/\1 zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
 ```
 
@@ -122,10 +129,19 @@ sed -i.$(date +'%Y%m%d-%H%M%S') 's/^\(plugins=([^)]*\))$/\1 zsh-autosuggestions 
 git clone git://github.com/wting/autojump.git
 cd autojump
 ./install.py
+
 echo '\n# autojump' >> ~/.zshrc
 echo "[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh" >> ~/.zshrc
 echo 'autoload -U compinit && compinit -u' >> ~/.zshrc
 # restart terminal
+```
+
+###### spring boot
+
+```bash
+git clone git@github.com:linux-china/oh-my-zsh-spring-boot-plugin.git $ZSH_CUSTOM/plugins/spring
+
+sed -i.$(date +'%Y%m%d-%H%M%S') 's/^\(plugins=([^)]*\))$/\1 spring)/' ~/.zshrc
 ```
 
 ###### zsh-auto-venv
@@ -160,7 +176,7 @@ First you need to install nerd fonts:
    
     2. Go to _Edit_ > _Preferences_
    
-    3. On the _Style_ tab choose `MesloLGS Nerd Font Mono Regular`
+    3. On the _Style_ tab choose `MesloLGS Nerd Font Regular`
 
         * NOTE: Here's a discussion of the `LG`, `L`, `M`, `S`, `DZ`, and `SZ`
           acronyms:
@@ -178,20 +194,25 @@ First you need to install nerd fonts:
     brew cask install font-meslolg-nerd-font
     ```
 
-    Also you might want to use this fixed Solarized Dark theme from
-    https://gist.github.com/kevin-smets/8568070:
+    1.  In iTerm2 preferences, go to _Preferences_ > _Profiles_ > _Default_ >
+        _Text_ and set the font to `MesloLGS Nerd Font`.
 
-    1. Download https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Solarized%20Dark%20-%20Patched.itermcolors
+    2.  Also you might want to use this fixed Solarized Dark theme from
+        https://gist.github.com/kevin-smets/8568070:
 
-    2. In iTerm2 preferences, go to _Preferences_ > _Profiles_ > _Default_ >
-       _Colors_ > _Color Presets..._ and import 
-       `Solarized Dark - Patched.itermcolors`
+        1. Download https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Solarized%20Dark%20-%20Patched.itermcolors
+
+        2. In iTerm2 preferences, go to _Preferences_ > _Profiles_ > _Default_ >
+           _Colors_ > _Color Presets..._ and import 
+           `Solarized Dark - Patched.itermcolors`
 
 Now continue with the powerlevel10k install:
 
 ```bash
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+
 sed -i.$(date +'%Y%m%d-%H%M%S') 's#ZSH_THEME="[^"]*"#ZSH_THEME="powerlevel10k/powerlevel10k"#' ~/.zshrc
+
 zsh
 # or later...
 p10k configure
@@ -236,6 +257,7 @@ sudo -s
 
 ```bash
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
 echo '\n# pyenv' >> ~/.zshrc
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
@@ -246,6 +268,7 @@ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nf
 
 ```bash
 sudo apt install python-openssl libssl-dev libbz2-dev libedit-dev libreadline-dev libsqlite3-dev
+
 pyenv install 3.8.2
 pyenv install 3.6.10
 pyenv install 3.5.9
@@ -280,10 +303,13 @@ sed -i.$(date +'%Y%m%d-%H%M%S') 's/^\(plugins=([^)]*\))$/\1 jenv)/' ~/.zshrc
 
 ```bash
 wget https://downloads.typesafe.com/scala/2.13.2/scala-2.13.2.tgz
+
 sudo mkdir /usr/lib/scala
 sudo tar -xf scala-2.13.2.tgz -C /usr/lib/scala
 rm scala-2.13.2.tgz
+
 sudo ln -s /usr/lib/scala/scala-2.13.2/bin/scala /bin/scala
 sudo ln -s /usr/lib/scala/scala-2.13.2/bin/scalac /bin/scalac
+
 scala --version
 ```
